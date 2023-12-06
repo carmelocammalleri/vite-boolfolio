@@ -7,6 +7,10 @@ export default{
     return {
       store
     }
+    
+  },
+  mounted(){
+   
   }
 }
 </script>
