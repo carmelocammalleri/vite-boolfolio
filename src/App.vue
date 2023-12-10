@@ -1,5 +1,5 @@
 <script>
-import Header from './components/partials/Header.vue'
+import Header from './components/partials/Header.vue';
 
 export default {
   name:'App',
@@ -18,6 +18,7 @@ export default {
   <Header/>
   <div class="container-routes">
     <RouterView/>
+
   </div>
   
 </template>
