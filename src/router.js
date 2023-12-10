@@ -8,6 +8,7 @@ import Contacts from './pages/Contacts.vue';
 
 const router = createRouter({
   history: createWebHistory(),
+  linkExactActiveClass: 'active',
   routes:[
     {
       path: '/',
