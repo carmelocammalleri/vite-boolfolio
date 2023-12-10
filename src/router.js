@@ -5,6 +5,7 @@ import About from './pages/About.vue';
 import Error from './pages/Error.vue';
 import Projects from './pages/Projects.vue';
 import Contacts from './pages/Contacts.vue';
+import Details from './pages/Details.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -29,6 +30,11 @@ const router = createRouter({
       path: '/contacts',
       name: 'contacts',
       component: Contacts,
+    },
+    {
+      path: '/details',
+      name: 'details',
+      component: Details,
     },
     {
       path: '/:pathMatch(.*)*',
