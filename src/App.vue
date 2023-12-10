@@ -26,5 +26,7 @@ export default {
 <style lang="scss">
   .container-routes {
     margin: 10px;
+    width: 100vw;
+    height: calc(100vh - 100px);
   }
 </style>

@@ -21,6 +21,7 @@ export default{
   },
   methods:{
     getApi(endpoint){
+      this.isLoaded = false;
       axios.get(endpoint)
         .then(results =>{
           this.isLoaded = true
@@ -37,9 +38,8 @@ export default{
 </script>
 
 <template>
-  <div>
-
-    <Loader v-if="!isLoaded"/>
+  <div class="containerMiddle">
+    <Loader class="middle" v-if="!isLoaded"/>
     <div v-else>
       <ViewProjectComponent />
       <Navigator @callApi="getApi" :links="links"/>
