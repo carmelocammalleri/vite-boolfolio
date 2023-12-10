@@ -30,10 +30,12 @@ export default{
     color: white;
     ul{
       padding: 0;
+      width: 100%;
       li{
+        margin: 0 auto;
         background-color: yellow;
-        margin-top: 15px;
-        width: 100%;
+        margin-top: 7px;
+        width: 400px;
         list-style: none;
         color: black;
       }
