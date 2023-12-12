@@ -32,7 +32,7 @@ const router = createRouter({
       component: Contacts,
     },
     {
-      path: '/details',
+      path: '/dettaglio-del-progetto/:slug',
       name: 'details',
       component: Details,
     },
