@@ -16,14 +16,16 @@ export default {
   },
   methods:{
     getProject(slug){
-      axios.get(store.apiUrl + 'projects/get-project' + slug)
+      axios.get(store.apiUrl + 'projects/get-project/' + slug)
       .then(res => {
           this.isLoaded = true;
-          this.project= res.data.project
+          this.project= res.data
         })
     }
   },
   mounted(){
+    const slug = this.$route.params.slug;
+    this.getProject(slug);
     this.slug = this.$route.params.slug;
   },
   computed: {
@@ -39,8 +41,8 @@ export default {
 
     <Loader v-if="!isLoaded" />
     <div v-else>
-        <h1>{{ project.name }}</h1>
-        <!-- <p>Tecnologia: {{ project.tecnology?.name || ' NO TECNOLOGIA '  }} | Tipologia: {{ typesList }}</p> -->
+        <h1>{{project.name }}</h1>
+        <p>Tecnologia: {{ project.tecnologies?.name || ' NO TECNOLOGIA '  }} | Tipologia: {{ typesList }}</p>
         <p>{{ project.description }}</p>
     </div>
     
