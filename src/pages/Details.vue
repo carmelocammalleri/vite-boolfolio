@@ -1,37 +1,48 @@
 <script>
 import axios from 'axios';
 import { store } from '../data/store'
+import Loader from '../components/Loader.vue'
 
 export default {
   name:'Details',
+  components: {
+    Loader
+  },
   data(){
     return {
-      project: {}
+      project: {},
+      isLoaded: false
     }
   },
   methods:{
     getProject(slug){
-      axios.get(store.apiUrl + 'projects/get-project/' + slug)
-        .then(res => {
-          console.log(res.data)
-          this.project= res.data
+      axios.get(store.apiUrl + 'projects/get-project' + slug)
+      .then(res => {
+          this.isLoaded = true;
+          this.project= res.data.project
         })
     }
   },
   mounted(){
     this.slug = this.$route.params.slug;
-  }
+  },
+  computed: {
+    typesList(){
+        return this.project.types?.map(type => type.name).join(', ') || 'NO TIPOLOGIA';
+    }
+  } 
 }
 </script>
 
 <template>
   <div class="details">
 
-    <h1>{{ project.name }}</h1>
-    <p>data</p>
-    <p>Tecnologia</p>
-    <p>Tipo</p>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia quam placeat, dignissimos nisi esse distinctio repellendus officiis tenetur, facilis iste ratione. Explicabo maiores officia facilis porro eum. Blanditiis, quis soluta.</p>
+    <Loader v-if="!isLoaded" />
+    <div v-else>
+        <h1>{{ project.name }}</h1>
+        <!-- <p>Tecnologia: {{ project.tecnology?.name || ' NO TECNOLOGIA '  }} | Tipologia: {{ typesList }}</p> -->
+        <p>{{ project.description }}</p>
+    </div>
     
   </div>
 </template>
