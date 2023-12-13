@@ -30,8 +30,8 @@ export default {
   },
   computed: {
     tecnologiesList(){
-    return this.project.tecnologies?.map(tecnologies => tecnologies.name).join(' - ') || 'NO TECNOLOGIA';
-  }
+    return this.project.tecnologies?.map(tecnologies => tecnologies.name).join(' - ') || 'NESSUNA TECNOLOGIA';
+    }
   } 
 }
 </script>
@@ -42,9 +42,11 @@ export default {
     <Loader v-if="!isLoaded" />
     <div v-else>
         <h1>{{project.name }}</h1>
-        <span class="badge"> {{ tecnologiesList }} </span> <br> 
-        <span style="color: white;">Type: {{ project.type.name }}</span>
-        <p style="color: white;"> Descrizione {{ project.description }}</p>
+        <span style="color: white;">Tecnologia: </span>
+          <span class="badge">{{ tecnologiesList }} </span>
+         <br> 
+        <span style="color: white;">Tipo: {{ project.type.name }}</span>
+        <p style="color: white;"> Descrizione: {{ project.description }}</p>
     </div>
     
   </div>

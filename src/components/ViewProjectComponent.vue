@@ -9,9 +9,6 @@ export default{
       store
     }
     
-  },
-  mounted(){
-   
   }
 }
 </script>
@@ -21,7 +18,7 @@ export default{
     <h1>{{ title }}</h1>
     <ul>
       <li v-for="project in store.projects" :key="project.id" >
-          <router-link :to="{name: 'details', params:{slug: project.slug}}"  class="name">{{ project.name }}</router-link>
+          <router-link :to="{name: 'details', params:{slug: project.slug}}" class="name">{{ project.name }} || {{ project.type.name }}</router-link>
       </li>
     </ul>
   </div>
