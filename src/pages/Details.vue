@@ -20,18 +20,18 @@ export default {
       .then(res => {
           this.isLoaded = true;
           this.project= res.data
+          console.log(this.project.tecnologies);
         })
     }
   },
   mounted(){
     const slug = this.$route.params.slug;
     this.getProject(slug);
-    this.slug = this.$route.params.slug;
   },
   computed: {
-    typesList(){
-        return this.project.types?.map(type => type.name).join(', ') || 'NO TIPOLOGIA';
-    }
+    tecnologiesList(){
+    return this.project.tecnologies?.map(tecnologies => tecnologies.name).join(' - ') || 'NO TECNOLOGIA';
+  }
   } 
 }
 </script>
@@ -42,8 +42,9 @@ export default {
     <Loader v-if="!isLoaded" />
     <div v-else>
         <h1>{{project.name }}</h1>
-        <p>Tecnologia: {{ project.tecnologies?.name || ' NO TECNOLOGIA '  }} | Tipologia: {{ typesList }}</p>
-        <p>{{ project.description }}</p>
+        <span class="badge"> {{ tecnologiesList }} </span> <br> 
+        <span style="color: white;">Type: {{ project.type.name }}</span>
+        <p style="color: white;"> Descrizione {{ project.description }}</p>
     </div>
     
   </div>
@@ -52,5 +53,9 @@ export default {
 <style lang="scss">
   .details{
     margin: 10px;
+  }
+  .badge {
+    background-color: aquamarine;
+    border-radius: 20px;
   }
 </style>
